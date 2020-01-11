@@ -1,5 +1,5 @@
 ifeq  ($(KERNELRELEASE),) #如果KERNERLRELEASE为空
-	KERNELDIR ?= /linux-5.3.0/linux-source-5.3.0 #安装的内核的源码路径
+	KERNELDIR ?= /linux-5.3.0/linux-source-5.3.0 #安装的内核的源码路径 也可以写 /lib/modules/$(uname -r)/build
 	PWD := $(shell pwd)
 modules: #模块编译
 	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
