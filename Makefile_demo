@@ -2,11 +2,11 @@ ifeq  ($(KERNELRELEASE),) #如果KERNERLRELEASE为空
 	KERNELDIR ?= /linux-5.3.0/linux-source-5.3.0 #安装的内核的源码路径 也可以写 /lib/modules/$(uname -r)/build
 	PWD := $(shell pwd)
 modules: #模块编译
-	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules #执行make modules,-C参数指定内核源码位置，M则指定需要编译的模块源文件地址，其实是对本makefile的递归调用
+	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules #执行make modules,-C参数指定内核源码位置，M则指定需要编译的模块源文件地址，其实是调用内核源码处的makefile
 modules_install:
 	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules_install
 clean:
 	rm -rf  *.o  *~ core .depend .*.cmd *.ko *.mod.c .tmp_versions
 else #生成中间文件（因为是使用的makefile的自动推导规则所以名字一定要与.c文件相同）
-	obj-m :=  hello_demo.o
+	obj-m :=  hello_demo.o #显式地将hello.o编译成hello.ko,即将其编译生成可加载模块，hello.o根据自动推导规则自动编译生成
 endif
