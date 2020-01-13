@@ -1,0 +1,1 @@
+cmd_/home/cet/linux_drive_pj/add_sub_module/test/test.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/cet/linux_drive_pj/add_sub_module/test/test.ko /home/cet/linux_drive_pj/add_sub_module/test/test.o /home/cet/linux_drive_pj/add_sub_module/test/test.mod.o ;  true
